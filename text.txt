@@ -1,0 +1,4 @@
+<% for (let i = 0; i < posts.length; i++) { %>
+   <h1> <%= posts[i].titulo %> </h1> 
+   <p> <%= posts[i].texto %> </p> 
+<% } %>
