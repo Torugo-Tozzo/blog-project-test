@@ -19,6 +19,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+app.get("/", function (req, res) {
+  res.redirect("/home");
+});
+
 app.get("/home",function (req,res){
   res.render("home",{homeContent: homeStartingContent});
 });
@@ -29,6 +33,17 @@ app.get("/about",function (req,res){
 
 app.get("/contact",function (req,res){
   res.render("contact",{contactContent: contactContent});
+});
+
+app.get("/compose",function (req,res){
+  res.render("compose",{contactContent: contactContent});
+});
+
+app.post("/compose",function(req,res){
+    const titulo = req.body.titulo;
+    const texto = req.body.composition;
+    console.log(titulo,texto);
+    res.send({titulo: titulo, texto: texto});
 });
 
 app.listen(3000, function() {
